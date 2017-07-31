@@ -1,0 +1,45 @@
+- Lambdas
+auto lambda = [] (const double& a) {return 2. * a);};
+[=] -> access scope by copy
+[&] -> access scope by reference 
+(concrete variables can be included in the lambda, or all of them if no one is declared)
+
+- Deduced type
+auto i = 5;
+
+- Iterators
+    #include <algorithm>
+    std::for_each(beginIt, endIt, function) 
+    
+- Functions
+    #include <functional>
+    int f1(int i) {return i;}
+    std::function<int(int)> g = f1;
+    auto g1 = f1;
+    g1(3); // Ok
+
+- Move semantics
+    type&& rValue
+    static_cast<type&&>() <- transform to rValue
+    std::move(lValue) <= transform to rValue (better)
+    
+    Move constructor and move operator:
+        Class(Class&& other) {} (move or std::move all class members)
+        Class operator=(const Class&& other) {}
+
+- default and delete methods
+    Class() = default;
+    Class() = delete; // do not create
+
+- data member initializer
+    class C {
+        int x = 5;
+    }
+        
+ - initializer list
+    #include <initializer_list>
+    std::initializer_list<int> l = {1,2,3,4};
+    std::vector<int> v = {0,1,2,3};
+
+ - nullptr
+    Use ALWAYS nullptr. Nevel NULL or 0
